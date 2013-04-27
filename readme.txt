@@ -1,12 +1,9 @@
 === Subscribe2 Widget Pro ===
 Contributors: dlocc
-Donate link: http://imdev.in/
-Tags: subscribe2, subscribe2 widget, subscribe2 shortcode, subscribe2 widget pro, subscribe2 form, subscribe2 sidebar
-Requires at least: 3.0
-Tested up to: 3.4.2
+Donate link: http://wordimpress.com/
 Stable tag: 1.0
 
-Subscribe2 Widget Pro enhances the capabilities of Subscribe2 by making it easy to add a subscription form to your WordPress site via a configurable widget.
+Subscribe2 Widget Pro greatly enhances the capabilities of Subscribe2 by making it easy to add a better subscription form to your WordPress site.
 
 == Description ==
 
@@ -32,7 +29,7 @@ Note: If you have Wordpress 2.7 or above you can simply go to 'Plugins' &gt; 'Ad
 
 = Why should I use this plugin? =
 
-You are using the Subscribe2 plugin and want to increase the number of subscribers to your blog yet lack the ability to do so because there's no widget.  Enter Subscribe2 Widget Pro.  This widget can be placed on any sidebar element to display a subscription form that you can then style to your hearts delight!
+If you are using the Subscribe2 plugin and want to increase the number of subscribers to your blog and are frustrated with the lack of options and reliability of the standard Subscribe2 Widget then this plugin is for you. Subscribe2 Widget Pro can be placed in any widgetized sidebar to display a subscription form that you can then customize and style to your hearts delight!
 
 = The plugin looks funny in my sidebar, what's the deal? =
 
