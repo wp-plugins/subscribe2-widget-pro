@@ -7,14 +7,23 @@ Subscribe2 Widget Pro greatly enhances the capabilities of Subscribe2 by making 
 
 == Description ==
 
-Subscribe2 is the leading email subscription plugin for WordPress.  Easily increase the number of subscribers to your blog by including a sign up form in your sidebar.  Subscribe2 Widget Pro expands on the standard Subscribe2 widget to provide more features and configurations than by default.
+= Subscribe2 Widget Pro Premium =
+[Upgrade to Subscribe2 Widget Pro Premium](http://wordimpress.com/wordpress-plugin-development/subscribe2-widget-pro/ "Upgrade to Subscribe2 Widget Pro Premium")
+
+*Subscribe2 Widget Pro Premium* is a **significant upgrade** to *Subscribe2 Widget Pro* that adds many features and functionality! Features include fast AJAX form submission, optimized Subscribe2 output, an advanced shortcode and more! Also included is priority support, lifetime updates and multisite support.
+
+= Subscribe2 Widget Pro =
+
+Subscribe2 is the leading email subscription plugin for WordPress. Subscribe2 Widget Pro greatly enhances the standard Subscribe2 widget to provide optimized features and advanced configurations. Easily increase the number of subscribers to your blog by including a better sign up form in your sidebar.
+
+Subscribe2 Widget Pro is actively supported and developed. The open source version is available for free to the WordPress community. For additional options and priority support please consider [upgrading to Subscribe2 Widget Pro Premium](http://wordimpress.com/wordpress-plugin-development/subscribe2-widget-pro/). If you like this plugin please [rate it on WordPress.org](http://wordpress.org/support/view/plugin-reviews/subscribe2-widget-pro/).
 
 = Features =
 
 1. Display a Subscribe2 newsletter sign-up widget on any sidebar
 2. Customize the look-and-feel of the widget
 3. Easy activation and setup
-4. Appropriate markup
+4. Clean and semantic markup
 5. Actively supported and developed
 
 == Installation ==
@@ -38,6 +47,11 @@ Some themes may have very small sidebars and CSS styles alter the appearance of 
 
 == Screenshots ==
 
+1. Subscribe2 Widget displayed with default Twenty Twelve theme
+
+2. Widget displayed in sidebar without any menu items toggled. This is the default widget appearance and may not reflect the current look of the widget.
+
+3. The widget settings page
 
 == Changelog ==
 

@@ -26,10 +26,45 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // error_reporting(E_ALL);
 // ini_set('display_errors', '1');
 
-define( 'S2w_PLUGIN_NAME', 'subscribe2-widget-pro');
-define( 'S2w_PLUGIN_NAME_PLUGIN', 'subscribe2-widget-pro/subscribe2-widget-pro.php');
-define( 'S2w_WIDGET_PRO_PATH', WP_PLUGIN_DIR.'/'.S2w_PLUGIN_NAME);
-define( 'S2w_WIDGET_PRO_URL', WP_PLUGIN_URL.'/'.S2w_PLUGIN_NAME);
+define( 'S2W_PLUGIN_NAME', 'subscribe2-widget-pro');
+define( 'S2W_PLUGIN_NAME_PLUGIN', 'subscribe2-widget-pro/subscribe2-widget-pro.php');
+define( 'S2W_WIDGET_PRO_PATH', WP_PLUGIN_DIR.'/'.S2W_PLUGIN_NAME);
+define( 'S2W_WIDGET_PRO_URL', WP_PLUGIN_URL.'/'.S2W_PLUGIN_NAME);
+define( 'S2W_WIDGET_UPGRADE_LINK', 'http://wordimpress.com/wordpress-plugin-development/subscribe2-widget-pro/');
+
+$s2wOptions = get_option('s2w_widget_settings');
+
+register_activation_hook(__FILE__, 's2w_widget_activate');
+register_uninstall_hook(__FILE__, 's2w_widget_uninstall');
+add_action('admin_init', 's2w_widget_init');
+add_action('admin_menu', 's2w_widget_add_options_page');
+
+/**
+ * Run function when plugin is Activated
+ *
+ */
+function s2w_widget_activate()
+{
+    //Check to see if Subscribe2 Plugin is active
+    if (!is_plugin_active('subscribe2/subscribe2.php')) {
+        //Throw error message
+        _e('<p>Subscribe2 Widget Pro plugin requires Subscribe2 to be installed and activated to work properly. Please install the Subscribe2 plugin and reactivate Subscribe2 Widget Pro.</p>','s2w');
+        exit;
+    }
+    $options = get_option('s2w_widget_settings');
+
+}
+
+/**
+ * Run function when plugin is DEactivated
+ */
+
+function s2w_widget_uninstall()
+{
+    // Delete options when uninstalled
+    delete_option('s2w_widget_settings');
+}
+
 
 /**
  * Adds Subscribe2 Widget Pro Options Page
@@ -41,24 +76,23 @@ require_once (dirname(__FILE__) . '/includes/options.php');
  * @TODO: Localize the Plugin for Other Languages
  *
  */
-//load_plugin_textdomain('sw2' , false, dirname( plugin_basename(__FILE__) ) . '/languages/' );
+//load_plugin_textdomain('s2w' , false, dirname( plugin_basename(__FILE__) ) . '/languages/' );
 
 
 /**
  * @TODO: Licensing
  */
-//$licenseFuncs = include(dirname(__FILE__) . '/lib/license.php');
-//if (file_exists($licenseFuncs)) {
-//    echo $licenseFuncs;
-//}
+$licenseFuncs = include(dirname(__FILE__) . '/lib/license.php');
+if (file_exists($licenseFuncs)) {
+    echo $licenseFuncs;
+}
 
 
 /**
- * Logic to check for updated version of Yelp Widget Pro Premium
+ * Logic to check for updated version of Subscribe2 Widget Pro Premium
  * if the user has a valid license key and email
  */
-$options = get_option('sw2_widget_settings');
-if($options['sw2_widget_premium_license_status'] == "1") {
+if(is_s2w_license_active()) {
 
     /**
      * Adds the Premium Plugin updater
@@ -70,7 +104,7 @@ if($options['sw2_widget_premium_license_status'] == "1") {
         'subscribe2-widget-pro'
     );
 
-    $licenseTransient = get_transient('sw2_widget_license_transient');
+    $licenseTransient = get_transient('s2w_widget_license_transient');
 
 }
 
@@ -82,22 +116,106 @@ add_action('wp_print_styles', 'add_subscribe2_widget_css');
 
 function add_subscribe2_widget_css() {
 
-    $cssOption = get_option('sw2_widget_settings');
+    global $s2wOptions;
 
-    if($cssOption["sw2_widget_disable_css"] == 0) {
+    if($s2wOptions["s2w_widget_disable_css"] == 0) {
 
-        $url = plugins_url(SW2_PLUGIN_NAME.'/includes/style/subscribe2.css', dirname(__FILE__));
+        $url = plugins_url(S2W_PLUGIN_NAME.'/includes/style/s2w-style.css', dirname(__FILE__));
 
-        wp_register_style('sw2-widget', $url);
-        wp_enqueue_style('sw2-widget');
+        wp_register_style('s2w-widget', $url);
+        wp_enqueue_style('s2w-widget');
 
     }
 
 }
 
 /**
+ * Check for Subscribe2
+ */
+function is_subscribe2_activated(){
+    //Check to see if Subscribe2 Plugin is active
+    $activePlugins = get_option('active_plugins');
+    if (in_array('subscribe2/subscribe2.php', $activePlugins) == false) {
+        return false; //plugin is NOT active
+    } else {
+        return true; //plugin is active
+    }
+
+}
+function s2w_admin_notice(){
+        _e('<div id="message" class="updated"><p>Subscribe2 Widget Pro plugin requires <strong><a href="http://wordpress.org/extend/plugins/subscribe2/" target="_blank" title="Download and install Subscribe2">Subscribe2</a></strong> to be installed and activated to work properly. Please install the Subscribe2 plugin to use Subscribe2 Widget Pro.</p></div>','s2w');
+
+    }
+
+
+/**
+ * Check License
+ */
+function is_s2w_license_active(){return true;
+
+    $options = get_option('s2w_widget_settings');
+    if(isset($options['s2w_widget_premium_license_status']) && $options['s2w_widget_premium_license_status'] == "1") {
+        return true;
+    } else {
+        //Update option license status option
+        $options['s2w_widget_premium_license_status'] = "0"; //set no license option
+        update_option('s2w_widget_settings', $options);
+        return false;
+    }
+
+}
+
+
+/**
+  * Adds Yelp Widget Pro Scripts
+  */
+ function add_s2w_widget_frontend_scripts(){
+
+     $options = get_option('s2w_widget_settings');
+     $s2wJSurl = plugins_url( S2W_PLUGIN_NAME.'/includes/js/subscribe2-widget-pro.js', dirname(__FILE__));
+
+     //Yelp Widget Pro JS
+     wp_register_script('s2w-widget-js', $s2wJSurl, array('jquery'));
+     wp_enqueue_script('s2w-widget-js');
+
+
+     //Yelp Widget Pro CSS
+     if(!isset($options["s2w_widget_disable_css"]) && $options["s2w_widget_disable_css"] == 0) {
+
+         $url = plugins_url(S2W_PLUGIN_NAME.'/includes/style/s2w-style.css', dirname(__FILE__));
+
+         wp_register_style('s2w-widget', $url);
+         wp_enqueue_style('s2w-widget');
+
+     }
+
+ }
+
+function s2w_get_IP() {
+    foreach (array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR') as $key)
+    {
+        if (array_key_exists($key, $_SERVER) === true)
+        {
+            foreach (array_map('trim', explode(',', $_SERVER[$key])) as $ip)
+            {
+                if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) !== false)
+                {
+                    return $ip;
+                }
+            }
+        }
+    }
+}
+
+
+/**
  * Get the Widget
  */
-if(!class_exists('Yelp_Widget')) {
+if(!class_exists('Subscribe2_Widget_Pro') && is_subscribe2_activated()) {
     require 'includes/widget.php';
+} else {
+
+    //Throw notice if subscribe2 is not activated
+    add_action( 'admin_notices', 's2w_admin_notice');
+
 }

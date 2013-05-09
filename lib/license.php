@@ -1,25 +1,25 @@
 <?php
 /**
- * @DESC: Yelp Widget Pro licensing logic
+ * @DESC: Subscribe2 Widget Pro licensing logic
  */
 
 
-if ( !class_exists('Plugin_Licensing') ):
+if ( !class_exists('S2W_Plugin_Licensing') ):
 
-class Plugin_Licensing {
+class S2W_Plugin_Licensing {
 
-    private $plugin = 'yelp-widget-pro/yelp-widget-pro.php';
+    private $plugin = 'subscribe2-widget-pro/subscribe2-widget-pro.php';
     private $base_url = 'http://wordimpress.com/';
-    private $opensource = 'http://downloads.wordpress.org/plugin/yelp-widget-pro.1.3.5.zip';
-    private $premium    = 'http://wordimpress.com/downloads/files/yelp-widget-pro.zip';
-    private $productID = 'YELPWIDGETPRO';
+    private $opensource = 'http://downloads.wordpress.org/plugin/subscribe2-widget-pro.1.0.zip';
+    private $premium    = 'http://wordimpress.com/downloads/files/subscribe2-widget-pro.zip';
+    private $productID = 'SUBSCRIBE2-WIDGET-PRO';
 
 
     //public function to check for premium license
     public function activate_license($options){
 
-        $licence_key = $options['yelp_widget_premium_license'];
-        $email = $options['yelp_widget_premium_email'];
+        if( isset($options["s2w_widget_premium_license"])) $licence_key = $options['s2w_widget_premium_license'];
+        if( isset($options["s2w_widget_premium_email"])) $email = $options['s2w_widget_premium_email'];
 
         $args = array(
        		'wc-api'	  => 'software-api',
@@ -30,22 +30,22 @@ class Plugin_Licensing {
        	);
 
         //Execute request (function below)
-        $result = Plugin_Licensing::execute_request($args);
+        $result = $this->execute_request($args);
 
         //If license is Activated
         if(!empty($result["activated"])){
 
             //Save transient variable to check license (saved as current UNIX timestamp)
             $licenseTransient = time();
-            set_transient('yelp_widget_license_transient', $licenseTransient, 60 * 60 * 168);
+            set_transient('s2w_widget_license_transient', $licenseTransient, 60 * 60 * 168);
 
             //Update option license status option
-            $options['yelp_widget_premium_license_status'] = "1";
-            update_option('yelp_widget_settings', $options);
+            $options['s2w_widget_premium_license_status'] = "1";
+            update_option('s2w_widget_settings', $options);
 
 
             //Run Upgrade Func
-            Plugin_Licensing::upgrade_downgrade($this->premium);
+            $this->upgrade_downgrade($this->premium);
 
         }
 
@@ -56,8 +56,8 @@ class Plugin_Licensing {
     // Valid deactivation reset request
     public function deactivate_license($options){
 
-        $licence_key = $options['yelp_widget_premium_license'];
-        $email = $options['yelp_widget_premium_email'];
+        if( isset($options["s2w_widget_premium_license"])) $licence_key = $options['s2w_widget_premium_license'];
+        if( isset($options["s2w_widget_premium_email"])) $email = $options['s2w_widget_premium_email'];
 
     	$args = array(
             'wc-api'	    => 'software-api',
@@ -68,17 +68,17 @@ class Plugin_Licensing {
     		'product_id'  	=> $this->productID
         );
 
-    	$result = Plugin_Licensing::execute_request($args);
+    	$result = $this->execute_request($args);
 
         if($result['reset'] == true){
             //Update option license status option and delete license
-            $options['yelp_widget_premium_license_status'] = "0";
-            $options['yelp_widget_premium_email'] = "";
-            $options['yelp_widget_premium_license'] = "";
-            update_option('yelp_widget_settings', $options);
+            $options['s2w_widget_premium_license_status'] = "0";
+            $options['s2w_widget_premium_email'] = "";
+            $options['s2w_widget_premium_license'] = "";
+            update_option('s2w_widget_settings', $options);
 
             //Run Upgrade Function
-            Plugin_Licensing::upgrade_downgrade($this->opensource);
+            $this->upgrade_downgrade($this->opensource);
 
         }
 
@@ -98,7 +98,7 @@ class Plugin_Licensing {
     // Fire away!
     public function execute_request( $args ) {
         //Create request URL
-    	$target_url = Plugin_Licensing::create_url( $args );
+    	$target_url = $this->create_url( $args );
         $target_url = html_entity_decode($target_url);
 
         //get data from target_url using WP's built in function
@@ -131,9 +131,9 @@ class Plugin_Licensing {
     public function license_status($options){
 
         //grab the license data from the plugin options
-        $licenseStatus = $options["yelp_widget_premium_license_status"];
-        $licenseKey = $options['yelp_widget_premium_license'];
-        $licenseEmail = $options['yelp_widget_premium_email'];
+        if( isset($options["s2w_widget_premium_license_status"])) $licenseStatus = $options["s2w_widget_premium_license_status"];
+        if( isset($options["s2w_widget_premium_license"])) $licenseKey = $options['s2w_widget_premium_license'];
+        if( isset($options["s2w_widget_premium_email"])) $licenseEmail = $options['s2w_widget_premium_email'];
         $response = '';
 
         /*
@@ -142,7 +142,7 @@ class Plugin_Licensing {
          *   and has inserted an email and license key
          */
         if($licenseStatus == 0 && !empty($licenseKey) && !empty($licenseEmail)) {
-             $response = Plugin_Licensing::activate_license($options);
+             $response = $this->activate_license($options);
         }
         //License is activated: 1
         elseif($licenseStatus == 1) {
@@ -155,7 +155,7 @@ class Plugin_Licensing {
         //User is deactivating license: 2
         elseif($licenseStatus == 2) {
 
-            $response = Plugin_Licensing::deactivate_license($options);
+            $response = $this->deactivate_license($options);
 
         }
 
@@ -165,28 +165,28 @@ class Plugin_Licensing {
 
     //Display License Responses to User
     public function license_response($response) {
-        $status = $response["activated"];
-        $code = $response["code"];
+        if( isset($response["activated"])) $status = $response["activated"];
+        if( isset($response["code"])) $code = $response["code"];
 
         //License is good and activated
         if(!empty($status) && $status == true || $response == 'valid') {
            $message = ($response['message'] != "v") ? ' <br/>'.$response['message'] : '';
            $response = __('<div class="license-activated alert alert-success">
-               <p><strong>License Activated</strong><br/> Thank you for purchasing Yelp Widget Pro Premium'.$message.'</p>
-           </div>','ywp');
+               <p><strong>License Activated</strong><br/> Thank you for purchasing Subscribe2 Widget Pro Premium'.$message.'</p>
+           </div>','s2w');
         }
         //License Key Errors
         elseif(!empty($code)) {
 
             switch($code) {
              case '101' :
-                 $error =  __('<p><strong>License Invalid</strong><br/> Please check that the license you are using is valid.</p>','ywp');
+                 $error =  __('<p><strong>License Invalid</strong><br/> Please check that the license you are using is valid.</p>','s2w');
                  break;
              case '103' :
-                 $error = __('<p><strong>License Invalid</strong><br/> Exceeded maximum number of activations.</p>','ywp');
+                 $error = __('<p><strong>License Invalid</strong><br/> Exceeded maximum number of activations.</p>','s2w');
                  break;
              default :
-                 $error = __('<p><strong>Invalid Request</strong><br/> Please <a href="http://wordpress.org/support/plugin/yelp-widget-pro" target="_blank">contact support</a> for assistance.</p>', 'ywp');
+                 $error = __('<p><strong>Invalid Request</strong><br/> Please <a href="http://wordpress.org/support/plugin/yelp-widget-pro" target="_blank">contact support</a> for assistance.</p>', 's2w');
          }
 
          $response = '<div class="license-activated alert alert-red">'.$error.'</div>';
@@ -194,17 +194,17 @@ class Plugin_Licensing {
 
         }
         //Deactivated License Key
-        elseif($response["reset"] == true) {
+        elseif(isset($response["reset"]) && $response["reset"] == true) {
 
             $response = '<div class="license-deactivated alert alert-success">
-                       <p><strong>'. __('License Deactivated</strong><br/> Thank you for using Yelp Widget Pro Premium', 'ywp') .'</p>
+                       <p><strong>'. __('License Deactivated</strong><br/> Thank you for using Subscribe2 Widget Pro Premium', 's2w') .'</p>
                    </div>';
 
         }
         elseif(empty($response)) {
 
             $response = '<div class="no-license alert alert-info">
-                       <p><strong>'. __('Upgrade to Yelp Widget Pro Premium</strong><br/> Features include review snippets, a shortcode to display Yelp businesses anywhere on your site, more configuration options and free lifetime updates.','ywp').'</p>
+                       <p><strong>'. __('Upgrade to Subscribe2 Widget Pro Premium</strong><br/> Features include AJAX form submission, first and last name field support, Subscribe2 frontend script removal and more.','s2w').'</p>
                    </div>';
 
 
