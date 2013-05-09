@@ -10,7 +10,7 @@ class S2W_Plugin_Licensing {
 
     private $plugin = 'subscribe2-widget-pro/subscribe2-widget-pro.php';
     private $base_url = 'http://wordimpress.com/';
-    private $opensource = 'http://downloads.wordpress.org/plugin/subscribe2-widget-pro.1.0.zip';
+    private $opensource = 'http://downloads.wordpress.org/plugin/subscribe2-widget-pro.1.1.zip';
     private $premium    = 'http://wordimpress.com/downloads/files/subscribe2-widget-pro.zip';
     private $productID = 'SUBSCRIBE2-WIDGET-PRO';
 
