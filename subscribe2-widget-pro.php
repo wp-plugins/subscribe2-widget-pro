@@ -56,7 +56,7 @@ function s2w_widget_activate()
 }
 
 /**
- * Run function when plugin is DEactivated
+ * Run function when plugin is Deactivated
  */
 
 function s2w_widget_uninstall()
@@ -230,7 +230,7 @@ function s2w_add_plugin_page_links( $links, $file){
 function s2w_add_plugin_meta_links( $meta, $file ){
     if ($file == S2W_PLUGIN_NAME_PLUGIN) {
         $meta[] = "<a href='http://wordpress.org/support/view/plugin-reviews/subscribe2-widget-pro' target='_blank' title='".__('Rate Subscribe2 Widget Pro','s2w')."'>".__('Rate Plugin','s2w')."</a>";
-        $meta[] = __('Thank You for Using Subscribe2 Widget Pro Premium','s2w');
+        $meta[] = __('Upgrade to <a href="http://wordimpress.com/wordpress-plugin-development/subscribe2-widget-pro/" target="_blank">Subscribe2 Widget Pro Premium</a>','s2w');
     }
     return $meta;
 }
