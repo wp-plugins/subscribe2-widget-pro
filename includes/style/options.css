@@ -56,8 +56,6 @@ Layout
 
 .controls { display: inline-block; }
 
-.settings_page_yelp_widget input.button-primary { clear: left; width: auto; display: block; }
-
 .help-block { color: #999; font-size: 85%; margin-top: 2px; }
 
 .label { padding: 2px 4px 3px; font-size: 85%; font-weight: bold; color: #fff; text-shadow: 0 -1px 0 rgba(0, 0, 0, .25); background-color: #999; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }

@@ -3,7 +3,7 @@
 Plugin Name: Subscribe2 Widget Pro
 Plugin URI: http://wordimpress.com/
 Description: An enhanced Subscribe2 WordPress widget that will help you increase newsletter conversions.
-Version: 1.1
+Version: 1.2
 Author: Devin Walker
 Author URI: http://imdev.in/
 License: GPLv2
@@ -151,7 +151,7 @@ function s2w_admin_notice(){
 /**
  * Check License
  */
-function is_s2w_license_active(){return true;
+function is_s2w_license_active(){
 
     $options = get_option('s2w_widget_settings');
     if(isset($options['s2w_widget_premium_license_status']) && $options['s2w_widget_premium_license_status'] == "1") {
@@ -167,19 +167,19 @@ function is_s2w_license_active(){return true;
 
 
 /**
-  * Adds Yelp Widget Pro Scripts
+  * Adds Subscribe2 Widget Pro Scripts
   */
  function add_s2w_widget_frontend_scripts(){
 
      $options = get_option('s2w_widget_settings');
      $s2wJSurl = plugins_url( S2W_PLUGIN_NAME.'/includes/js/subscribe2-widget-pro.js', dirname(__FILE__));
 
-     //Yelp Widget Pro JS
+     //Subscribe2 Widget Pro JS
      wp_register_script('s2w-widget-js', $s2wJSurl, array('jquery'));
      wp_enqueue_script('s2w-widget-js');
 
 
-     //Yelp Widget Pro CSS
+     //Subscribe2 Widget Pro CSS
      if(!isset($options["s2w_widget_disable_css"]) && $options["s2w_widget_disable_css"] == 0) {
 
          $url = plugins_url(S2W_PLUGIN_NAME.'/includes/style/s2w-style.css', dirname(__FILE__));
@@ -205,6 +205,48 @@ function s2w_get_IP() {
             }
         }
     }
+}
+
+
+
+/**
+ * Add links to Plugin listings view
+ * @param $links
+ * @return mixed
+ */
+function s2w_add_plugin_page_links( $links, $file){
+    if ( $file == S2W_PLUGIN_NAME_PLUGIN) {
+        // Add Widget Page link to our plugin
+        $link = s2w_get_options_link();
+        array_unshift( $links, $link );
+
+        // Add Support Forum link to our plugin
+        $link = s2w_get_support_forum_link();
+        array_unshift( $links, $link );
+    }
+    return $links;
+}
+
+function s2w_add_plugin_meta_links( $meta, $file ){
+    if ($file == S2W_PLUGIN_NAME_PLUGIN) {
+        $meta[] = "<a href='http://wordpress.org/support/view/plugin-reviews/subscribe2-widget-pro' target='_blank' title='".__('Rate Subscribe2 Widget Pro','s2w')."'>".__('Rate Plugin','s2w')."</a>";
+        $meta[] = __('Thank You for Using Subscribe2 Widget Pro Premium','s2w');
+    }
+    return $meta;
+}
+
+function s2w_get_support_forum_link( $linkText = '' ) {
+    if ( empty($linkText) ) {
+        $linkText = __( 'Support', 's2w' );
+    }
+    return '<a href="http://wordimpress.com/support/forum/subscribe2-widget-pro/" target="_blank" title="Get Support">' . $linkText . '</a>';
+}
+
+function s2w_get_options_link( $linkText = '' ) {
+    if ( empty($linkText) ) {
+        $linkText = __( 'Settings', 's2w' );
+    }
+    return '<a href="options-general.php?page=subscribe2-widget-pro">' . $linkText . '</a>';
 }
 
 

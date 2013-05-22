@@ -10,7 +10,7 @@ class S2W_Plugin_Licensing {
 
     private $plugin = 'subscribe2-widget-pro/subscribe2-widget-pro.php';
     private $base_url = 'http://wordimpress.com/';
-    private $opensource = 'http://downloads.wordpress.org/plugin/subscribe2-widget-pro.1.1.zip';
+    private $opensource = 'http://downloads.wordpress.org/plugin/subscribe2-widget-pro.zip';
     private $premium    = 'http://wordimpress.com/downloads/files/subscribe2-widget-pro.zip';
     private $productID = 'SUBSCRIBE2-WIDGET-PRO';
 
@@ -186,7 +186,7 @@ class S2W_Plugin_Licensing {
                  $error = __('<p><strong>License Invalid</strong><br/> Exceeded maximum number of activations.</p>','s2w');
                  break;
              default :
-                 $error = __('<p><strong>Invalid Request</strong><br/> Please <a href="http://wordpress.org/support/plugin/yelp-widget-pro" target="_blank">contact support</a> for assistance.</p>', 's2w');
+                 $error = __('<p><strong>Invalid Request</strong><br/> Please <a href="http://wordpress.org/support/plugin/subscribe2-widget-pro" target="_blank">contact support</a> for assistance.</p>', 's2w');
          }
 
          $response = '<div class="license-activated alert alert-red">'.$error.'</div>';

@@ -55,6 +55,11 @@ function s2w_widget_init()
     // Register the s2w_widget settings as a group
     register_setting('s2w_widget_settings', 's2w_widget_settings');
 
+    //Custom Plugin Links
+    add_filter( 'plugin_row_meta', 's2w_add_plugin_meta_links', 10, 2 );
+    add_filter( 'plugin_action_links', 's2w_add_plugin_page_links', 10, 2 );
+
+
 }
 
 // Output the s2w_widget option setting value

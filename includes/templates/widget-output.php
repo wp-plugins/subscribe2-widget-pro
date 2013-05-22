@@ -17,11 +17,11 @@ if(!$hide_widget_title == 'hide') {
 }
 
 //Display Success Message for signed up users (non-AJAX submissions)
-if($_POST["subscribe"]){
+if(isset($_POST["subscribe"])){
 
     echo "<div class='s2w-alert s2w-success'>".$success_message."</div>";
 
-} elseif($_POST["unsubscribe"]){
+} elseif(isset($_POST["unsubscribe"])){
 
     echo "<div class='s2w-alert s2w-success'>".$unsubscribe_message."</div>";
 

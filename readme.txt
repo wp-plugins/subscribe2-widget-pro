@@ -1,7 +1,7 @@
 === Subscribe2 Widget Pro ===
 Contributors: dlocc
 Donate link: http://wordimpress.com/
-Stable tag: 1.1
+Stable tag: 1.2
 
 Subscribe2 Widget Pro greatly enhances the capabilities of Subscribe2 by making it easy to add a better subscription form to your WordPress site.
 
@@ -54,6 +54,11 @@ Some themes may have very small sidebars and CSS styles alter the appearance of 
 3. The widget settings page
 
 == Changelog ==
+
+= 1.2 =
+* Fixed "Undefined index" PHP notice
+* Added plugin meta links to options page, support and premium downloads
+* Updated a few bad links
 
 = 1.1 =
 * Release of stable version with premium licensing logic
