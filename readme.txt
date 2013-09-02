@@ -1,7 +1,7 @@
 === Subscribe2 Widget Pro ===
 Contributors: dlocc
 Donate link: http://wordimpress.com/
-Stable tag: 1.2
+Stable tag: 1.2.1
 
 Subscribe2 Widget Pro greatly enhances the capabilities of Subscribe2 by making it easy to add a better subscription form to your WordPress site.
 
