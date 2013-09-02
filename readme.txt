@@ -55,6 +55,9 @@ Some themes may have very small sidebars and CSS styles alter the appearance of 
 
 == Changelog ==
 
+= 1.2.1 =
+* Updated: License communication logic
+
 = 1.2 =
 * Fixed "Undefined index" PHP notice
 * Added plugin meta links to options page, support and premium downloads
