@@ -7,14 +7,11 @@ jQuery(function(){
     //Deactivate License
     jQuery('#deactivate').on('click', function(e){
 
-        //Prevent default form submit
-        e.preventDefault();
-
         //Update license status value
         jQuery('#s2w_widget_premium_license_status').val('2');
 
         //Submit form
-        jQuery('#s2w-settings').submit();
+        jQuery('#subscribe2-settings').submit();
 
     });
 

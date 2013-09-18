@@ -1,24 +1,24 @@
 <?php
 /**
- * Plugin Update Checker Library 1.3
+ * Plugin Update Checker Library 1.3.1
  * http://w-shadow.com/
  * 
- * Copyright 2012 Janis Elsts
+ * Copyright 2013 Janis Elsts
  * Licensed under the GNU GPL license.
  * http://www.gnu.org/licenses/gpl.html
  */
 
-if ( !class_exists('PluginUpdateChecker_1_3') ):
+if ( !class_exists('PluginUpdateChecker_1_3_1') ):
 
 /**
  * A custom plugin update checker. 
  * 
  * @author Janis Elsts
- * @copyright 2012
- * @version 1.2
+ * @copyright 2013
+ * @version 1.3.1
  * @access public
  */
-class PluginUpdateChecker_1_3 {
+class PluginUpdateChecker_1_3_1 {
 	public $metadataUrl = ''; //The URL of the plugin's metadata file.
 	public $pluginFile = '';  //Plugin filename relative to the plugins directory.
 	public $slug = '';        //Plugin slug.
@@ -83,10 +83,23 @@ class PluginUpdateChecker_1_3 {
 		$this->cronHook = 'check_plugin_updates-' . $this->slug;
 		if ( $this->checkPeriod > 0 ){
 			
-			//Trigger the check via Cron
-			add_filter('cron_schedules', array($this, '_addCustomSchedule'), 20);
-			if ( !wp_next_scheduled($this->cronHook) && !defined('WP_INSTALLING') ) {
+			//Trigger the check via Cron.
+			//Try to use one of the default schedules if possible as it's less likely to conflict
+			//with other plugins and their custom schedules.
+			$defaultSchedules = array(
+				1  => 'hourly',
+				12 => 'twicedaily',
+				24 => 'daily',
+			);
+			if ( array_key_exists($this->checkPeriod, $defaultSchedules) ) {
+				$scheduleName = $defaultSchedules[$this->checkPeriod];
+			} else {
+				//Use a custom cron schedule.
 				$scheduleName = 'every' . $this->checkPeriod . 'hours';
+				add_filter('cron_schedules', array($this, '_addCustomSchedule'));
+			}
+
+			if ( !wp_next_scheduled($this->cronHook) && !defined('WP_INSTALLING') ) {
 				wp_schedule_event(time(), $scheduleName, $this->cronHook);
 			}
 			add_action($this->cronHook, array($this, 'checkForUpdates'));
@@ -102,7 +115,11 @@ class PluginUpdateChecker_1_3 {
 			wp_clear_scheduled_hook($this->cronHook);
 		}
 
-		add_action('plugins_loaded', array($this, 'initDebugBarPanel'));
+		if ( did_action('plugins_loaded') ) {
+			$this->initDebugBarPanel();
+		} else {
+			add_action('plugins_loaded', array($this, 'initDebugBarPanel'));
+		}
 	}
 	
 	/**
@@ -889,7 +906,7 @@ class PucFactory {
 endif;
 
 //Register classes defined in this file with the factory.
-PucFactory::addVersion('PluginUpdateChecker', 'PluginUpdateChecker_1_3', '1.3');
+PucFactory::addVersion('PluginUpdateChecker', 'PluginUpdateChecker_1_3_1', '1.3.1');
 PucFactory::addVersion('PluginUpdate', 'PluginUpdate_1_3', '1.3');
 PucFactory::addVersion('PluginInfo', 'PluginInfo_1_3', '1.3');
 
@@ -898,7 +915,7 @@ PucFactory::addVersion('PluginInfo', 'PluginInfo_1_3', '1.3');
  * compatibility with versions that did not use a factory, and it simplifies doc-comments.
  */
 if ( !class_exists('PluginUpdateChecker') ) {
-	class PluginUpdateChecker extends PluginUpdateChecker_1_3 { }
+	class PluginUpdateChecker extends PluginUpdateChecker_1_3_1 { }
 }
 
 if ( !class_exists('PluginUpdate') ) {

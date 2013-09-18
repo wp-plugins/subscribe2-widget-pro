@@ -6,8 +6,7 @@
  */
 
 //Subscribe2 Options Page
-function s2w_widget_add_options_page()
-{
+function s2w_widget_add_options_page() {
 
     // Add the menu option under Settings, shows up as "s2w API Settings" (second param)
     $page = add_submenu_page('options-general.php', //The parent page of this menu
@@ -24,8 +23,7 @@ function s2w_widget_add_options_page()
 }
 
 //Add Subscribe2 Widget Pro option scripts to admin head - will only be loaded on plugin options page
-function s2w_options_scripts()
-{
+function s2w_options_scripts() {
     //register admin JS
     wp_enqueue_script('s2w_widget_options_js', plugins_url('includes/js/options.js', dirname(__FILE__)));
 
@@ -37,8 +35,7 @@ function s2w_options_scripts()
 }
 
 //Load Widget JS Script ONLY on Widget page
-function s2w_widget_scripts($hook)
-{
+function s2w_widget_scripts($hook) {
     if ($hook == 'widgets.php') {
         wp_enqueue_script('s2w_widget_admin_scripts', plugins_url('includes/js/admin-widget.js', dirname(__FILE__)));
         wp_enqueue_style('s2w_widget_admin_css', plugins_url('includes/style/admin-widget.css', dirname(__FILE__)));
@@ -50,21 +47,19 @@ function s2w_widget_scripts($hook)
 add_action('admin_enqueue_scripts', 's2w_widget_scripts');
 
 //Initiate the Subscribe2 Widget
-function s2w_widget_init()
-{
+function s2w_widget_init() {
     // Register the s2w_widget settings as a group
     register_setting('s2w_widget_settings', 's2w_widget_settings');
 
     //Custom Plugin Links
-    add_filter( 'plugin_row_meta', 's2w_add_plugin_meta_links', 10, 2 );
-    add_filter( 'plugin_action_links', 's2w_add_plugin_page_links', 10, 2 );
+    add_filter('plugin_row_meta', 's2w_add_plugin_meta_links', 10, 2);
+    add_filter('plugin_action_links', 's2w_add_plugin_page_links', 10, 2);
 
 
 }
 
 // Output the s2w_widget option setting value
-function s2w_widget_option($setting, $options)
-{
+function s2w_widget_option($setting, $options) {
     // If the old setting is set, output that
     if (get_option($setting) != '') {
         echo get_option($setting);
@@ -75,8 +70,7 @@ function s2w_widget_option($setting, $options)
 
 
 // Generate the admin form
-function s2w_widget_options_form()
-{
+function s2w_widget_options_form() {
     ?>
 
     <div class="wrap" xmlns="http://www.w3.org/1999/html">
@@ -156,7 +150,11 @@ function s2w_widget_options_form()
                                 $options = get_option('s2w_widget_settings');
 
                                 // Debug, show stored options
-                                // echo '<pre>'; print_r($options); echo '</pre>'; ?>
+                                if (S2W_DEBUG == true) {
+                                    echo "<pre>";
+                                    var_dump($options);
+                                    echo "</pre>";
+                                } ?>
 
                                 <div class="control-group">
                                     <div class="control-label">

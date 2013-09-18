@@ -28,8 +28,6 @@ global $options;
         if( isset($response["activated"])) $status = $response["activated"];
         if( isset($response["code"]) ) $code = $response["code"]; ?>
 
-        <form id="s2w-license" method="post" action="options.php">
-
         <?php //Display appropriate notifications to the user
              echo $licensing->license_response($response);  ?>
 

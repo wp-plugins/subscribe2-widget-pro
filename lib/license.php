@@ -11,7 +11,7 @@ if (!class_exists('S2W_Plugin_Licensing')):
         private $plugin = 'subscribe2-widget-pro/subscribe2-widget-pro.php';
         private $base_url = 'http://wordimpress.com/';
         private $opensource = 'http://downloads.wordpress.org/plugin/subscribe2-widget-pro.zip';
-        private $premium = 'http://wordimpress.com/downloads/files/subscribe2-widget-pro.zip';
+        private $premium = 'http://wordimpress.com/wp-update-server/?action=download&slug=subscribe2-widget-pro';
         private $productID = 'SUBSCRIBE2-WIDGET-PRO';
 
 
@@ -43,9 +43,10 @@ if (!class_exists('S2W_Plugin_Licensing')):
                 $options['s2w_widget_premium_license_status'] = "1";
                 update_option('s2w_widget_settings', $options);
 
-
                 //Run Upgrade Func
-                $this->upgrade_downgrade($this->premium);
+                $premiumPackage = add_query_arg(array('license_key' => $licence_key), $this->premium);
+                $this->upgrade_downgrade($premiumPackage);
+
 
             }
 
@@ -93,19 +94,16 @@ if (!class_exists('S2W_Plugin_Licensing')):
         }
 
 
-        /**
-         * Execute Software API Request
-         * @param $args
-         * @return array|mixed
-         */
+        // Fire away!
         public function execute_request($args) {
+
             //Create request URL
             $target_url = $this->create_url($args);
             $target_url = html_entity_decode($target_url);
 
             //get data from target_url using WP's built in function
             $data = wp_remote_get($target_url);
-            if ($this->isJson($data['body']) == false) {
+            if (is_object(json_decode($data['body']))) {
                 $ch = curl_init($target_url);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -127,12 +125,6 @@ if (!class_exists('S2W_Plugin_Licensing')):
 
         }
 
-        //check if jSON
-        // see: http://stackoverflow.com/questions/6041741/fastest-way-to-check-if-a-string-is-json-in-php
-        public function isJson($string) {
-            json_decode($string);
-            return (json_last_error() == JSON_ERROR_NONE);
-        }
 
         // Create an url (used for License activation)
         public function create_url($args) {
@@ -156,7 +148,9 @@ if (!class_exists('S2W_Plugin_Licensing')):
              *   and has inserted an email and license key
              */
             if ($licenseStatus == 0 && !empty($licenseKey) && !empty($licenseEmail)) {
+
                 $response = $this->activate_license($options);
+
             } //License is activated: 1
             elseif ($licenseStatus == 1) {
 
@@ -193,11 +187,14 @@ if (!class_exists('S2W_Plugin_Licensing')):
                     case '101' :
                         $error = __('<p><strong>License Invalid</strong><br/> Please check that the license you are using is valid.</p>', 's2w');
                         break;
+                    case '102' :
+                        $error = __('<p><strong>Error Code 102</strong><br/> Software has been deactivated.</p>', 's2w');
+                        break;
                     case '103' :
                         $error = __('<p><strong>License Invalid</strong><br/> Exceeded maximum number of activations.</p>', 's2w');
                         break;
                     default :
-                        $error = __('<p><strong>Invalid Request</strong><br/> Please <a href="http://wordpress.org/support/plugin/subscribe2-widget-pro" target="_blank">contact support</a> for assistance.</p>', 's2w');
+                        $error = __('<p><strong>Invalid Request</strong><br/> Please <a href="http://wordimpress.com/support/forum/subscribe2-widget-pro/" target="_blank">contact support</a> for assistance.</p>', 's2w');
                 }
 
                 $response = '<div class="license-activated alert alert-red">' . $error . '</div>';
@@ -224,23 +221,37 @@ if (!class_exists('S2W_Plugin_Licensing')):
 
         } //end license_response
 
+        /**
+         * Updates the Plugin: Handle the Magic
+         * @param $package
+         */
         private function upgrade_downgrade($package) {
+            if (S2W_DEBUG == false) {
 
-            include ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
-            $upgrader = new Plugin_Upgrader();
+                include ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+                $upgrader = new Plugin_Upgrader();
+                $upgrader->init();
+                $upgrader->install_strings();
+                $upgrader->upgrade_strings();
+                $upgrader->run(array(
+                    'package' => $package,
+                    'destination' => WP_PLUGIN_DIR,
+                    'clear_destination' => true,
+                    'clear_working' => true,
+                    'hook_extra' => array(
+                        'plugin' => $this->plugin
+                    )
+                ));
 
-            $upgrader->init();
-            $upgrader->install_strings();
-            $upgrader->upgrade_strings();
-            $upgrader->run(array(
-                'package' => $package,
-                'destination' => WP_PLUGIN_DIR,
-                'clear_destination' => true,
-                'clear_working' => true,
-                'hook_extra' => array(
-                    'plugin' => $this->plugin
-                )
-            ));
+            } //Debugging
+            else {
+
+                echo "<pre>";
+                var_dump($package);
+                echo "</pre>";
+                die();
+            }
+
 
         }
 
