@@ -3,7 +3,7 @@
 Plugin Name: Subscribe2 Widget Pro
 Plugin URI: http://wordimpress.com/
 Description: An enhanced Subscribe2 WordPress widget that will help you increase newsletter conversions.
-Version: 1.2.1
+Version: 1.2.2
 Author: Devin Walker
 Author URI: http://imdev.in/
 License: GPLv2
