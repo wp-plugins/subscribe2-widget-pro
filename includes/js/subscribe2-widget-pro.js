@@ -6,7 +6,6 @@ jQuery(function($){
 
     jQuery('.s2w-form').on('submit',function(e){
         var email = jQuery(this).children('.s2w-email').val();
-        console.log(email);
         //validate email
         if( !validateEmail(email)) {
             //not a valid email address
@@ -23,13 +22,11 @@ jQuery(function($){
 });
 
 
-function validateEmail($email) {
-  var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-  if( !emailReg.test( $email ) ) {
-    return false;
-  } else {
-    return true;
-  }
+function validateEmail(email) {
+   // http://stackoverflow.com/a/46181/11236
+    var emailReg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return emailReg.test(email);
+
 }
 
 function s2wInvalidMessage(form){

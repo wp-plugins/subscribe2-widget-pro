@@ -7,23 +7,23 @@
  * @created: 4/28/13
  */
 
-if(isset($before_widget)) echo $before_widget;
+if (isset($before_widget)) echo $before_widget;
 
 //Hide Widget Title if option enabled
-if(!$hide_widget_title == 'hide') {
-    if(isset($before_title)) echo $before_title;
-    if(isset($title)) echo $title;
-    if(isset($after_title)) echo $after_title;
+if (!$hide_widget_title == 'hide') {
+    if (isset($before_title)) echo $before_title;
+    if (isset($title)) echo $title;
+    if (isset($after_title)) echo $after_title;
 }
 
 //Display Success Message for signed up users (non-AJAX submissions)
-if(isset($_POST["subscribe"])){
+if (isset($_POST["subscribe"])) {
 
-    echo "<div class='s2w-alert s2w-success'>".$success_message."</div>";
+    echo "<div class='s2w-alert s2w-success'>" . $success_message . "</div>";
 
-} elseif(isset($_POST["unsubscribe"])){
+} elseif (isset($_POST["unsubscribe"])) {
 
-    echo "<div class='s2w-alert s2w-success'>".$unsubscribe_message."</div>";
+    echo "<div class='s2w-alert s2w-success'>" . $unsubscribe_message . "</div>";
 
 } else {
 //Show Widget
@@ -31,16 +31,18 @@ if(isset($_POST["subscribe"])){
     //Determine where this form will post data to
     if (!empty($postto) && $postto !== 'home') {
         $postPermalink = get_permalink($postto);
-    } elseif( $postto == 'home') {
+    } elseif ($postto == 'home') {
         $postPermalink = get_bloginfo('wpurl');
     }
 
 
-     ?>
+    ?>
 
     <div class="s2w-widget-pro<?php
     //Output Custom DIV class
-    if(!empty($div)) {  echo ' '.$div; }; ?>" data-validation-error="<?php echo $validation_message; ?>">
+    if (!empty($div)) {
+        echo ' ' . $div;
+    }; ?>" data-validation-error="<?php echo $validation_message; ?>">
 
         <?php
         if (!empty($widgetprecontent)) {
@@ -52,9 +54,9 @@ if(isset($_POST["subscribe"])){
 
             <input type="hidden" value="<?php echo s2w_get_IP(); ?>" name="ip">
 
-            <label for="s2email"><?php _e('Your email:','s2w'); ?></label><br><input type="text" onblur="if (this.value == '') {this.value = 'Enter email address...';}" onfocus="if (this.value == 'Enter email address...') {this.value = '';}" size="20" value="Enter email address..." id="s2email" class="s2w-email" name="email">
+            <label for="s2email"><?php _e('Your email:', 's2w'); ?></label><br><input type="text" onblur="if (this.value == '') {this.value = 'Enter email address...';}" onfocus="if (this.value == 'Enter email address...') {this.value = '';}" size="20" value="Enter email address..." id="s2email" class="s2w-email" name="email">
 
-            <?php if($hide_subscribe_button != 'none') { ?>
+            <?php if ($hide_subscribe_button != 'none') { ?>
                 <input type="submit" value="Subscribe" name="subscribe">
             <?php } ?>
 
@@ -62,8 +64,18 @@ if(isset($_POST["subscribe"])){
             /**
              * Show Unsubscribe button if checked
              */
-            if($hide_unsubscribe_button == 'show') {?>
-               <input type="submit" value="Unsubscribe" name="unsubscribe">
+            if ($hide_unsubscribe_button == 'show') {
+                ?>
+                <input type="submit" value="Unsubscribe" name="unsubscribe">
+            <?php } ?>
+
+            <?php if ($disable_antispam !== 'no') { ?>
+                <span style="display:none !important">
+                              <label for="name">Leave Blank:</label>
+                              <input type="text" class="s2w-name" name="name"/>
+                              <label for="uri">Don't Change:</label>
+                              <input type="text" class="s2w-uri" name="uri" value="http://"/>
+                          </span>
             <?php } ?>
 
         </form>
@@ -77,4 +89,4 @@ if(isset($_POST["subscribe"])){
     </div>
 
 <?php } //end check for $_POST submission  ?>
-<?php if(isset($after_widget)) echo $after_widget;  ?>
+<?php if (isset($after_widget)) echo $after_widget; ?>

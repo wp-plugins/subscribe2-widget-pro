@@ -4,7 +4,7 @@ Donate link: http://wordimpress.com/
 Tags: subscribe2, widget, newsletter, email, newsletter widget, subscribe2 widget
 Requires at least: 3.5
 Tested up to: 3.6.1
-Stable tag: 1.2.2
+Stable tag: 1.2.5
 
 Subscribe2 Widget Pro greatly enhances the capabilities of Subscribe2 by making it easy to add a better subscription form to your WordPress site.
 
@@ -57,6 +57,12 @@ Some themes may have very small sidebars and CSS styles alter the appearance of 
 3. The widget settings page
 
 == Changelog ==
+
+= 1.2.5 =
+* New: Added anti-spam feature to widget found in version 9.0 of Subscribe2
+* Updated: Thorough testing and debugging of non-AJAX submission methods
+* Updated: Reworked email validation regex for email field
+* Cleanup: Removed unused is_subscribe2_activated function
 
 = 1.2.2 =
 * Updated: Polished upgrade/downgrade code and removed isJSON PHP 5.3+ function for users of older PHP versions

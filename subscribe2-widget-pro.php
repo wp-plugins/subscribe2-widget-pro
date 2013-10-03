@@ -3,7 +3,7 @@
 Plugin Name: Subscribe2 Widget Pro
 Plugin URI: http://wordimpress.com/
 Description: An enhanced Subscribe2 WordPress widget that will help you increase newsletter conversions.
-Version: 1.2.2
+Version: 1.2.5
 Author: Devin Walker
 Author URI: http://imdev.in/
 License: GPLv2
@@ -107,26 +107,6 @@ if (is_s2w_license_active()) {
 
 
 /**
- * Adds Subscribe2 Widget Pro Stylesheets
- */
-add_action('wp_print_styles', 'add_subscribe2_widget_css');
-
-function add_subscribe2_widget_css() {
-
-    global $s2wOptions;
-
-    if ($s2wOptions["s2w_widget_disable_css"] == 0) {
-
-        $url = plugins_url(S2W_PLUGIN_NAME . '/includes/style/s2w-style.css', dirname(__FILE__));
-
-        wp_register_style('s2w-widget', $url);
-        wp_enqueue_style('s2w-widget');
-
-    }
-
-}
-
-/**
  * Check for Subscribe2
  */
 function is_subscribe2_activated() {
@@ -161,31 +141,6 @@ function is_s2w_license_active() {
 
 }
 
-
-/**
- * Adds Subscribe2 Widget Pro Scripts
- */
-function add_s2w_widget_frontend_scripts() {
-
-    $options = get_option('s2w_widget_settings');
-    $s2wJSurl = plugins_url(S2W_PLUGIN_NAME . '/includes/js/subscribe2-widget-pro.js', dirname(__FILE__));
-
-    //Subscribe2 Widget Pro JS
-    wp_register_script('s2w-widget-js', $s2wJSurl, array('jquery'));
-    wp_enqueue_script('s2w-widget-js');
-
-
-    //Subscribe2 Widget Pro CSS
-    if (!isset($options["s2w_widget_disable_css"]) && $options["s2w_widget_disable_css"] == 0) {
-
-        $url = plugins_url(S2W_PLUGIN_NAME . '/includes/style/s2w-style.css', dirname(__FILE__));
-
-        wp_register_style('s2w-widget', $url);
-        wp_enqueue_style('s2w-widget');
-
-    }
-
-}
 
 function s2w_get_IP() {
     foreach (array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR') as $key) {
