@@ -43,9 +43,17 @@ Note: If you have Wordpress 2.7 or above you can simply go to 'Plugins' &gt; 'Ad
 
 If you are using the Subscribe2 plugin and want to increase the number of subscribers to your blog and are frustrated with the lack of options and reliability of the standard Subscribe2 Widget then this plugin is for you. Subscribe2 Widget Pro can be placed in any widgetized sidebar to display a subscription form that you can then customize and style to your hearts delight!
 
+= I'm not receiving any emails, what's the deal? =
+
+First, please ensure that your WordPress is sending emails correctly by using (http://wordpress.org/plugins/check-email/ "Check Email") or (http://wordpress.org/plugins/wp-smtp/ "WP SMTP") to test email functionality. If you do not receive emails after testing with either of these plugins then something is up with your WordPress email configuration.
+
+If you have confirmed that your WordPress is sending emails correctly and you are still not receiving subscription notices or tests then it's time to check the widget configuration. Under "Submission Options" check the page that the "Post form content to page" field points to. Does this page contain the Subscribe2 shortcode? If not, the subscription emails will not send. The widget is dependent of having the shortcode on the page that it is pointing to for it to function properly.
+
+Still not working? It's time to open a support ticket with WordImpress so we can check it out: (http://wordpress.org/plugins/check-email/ "Check Email") or (http://wordimpress.com/support/forum/subscribe2-widget-pro/subscribe2-widget-pro-free-version/ "Subscribe2 Widget Pro Free Support"). Please be prepared to provide a temporary login for us to work with on your site.
+
 = The plugin looks funny in my sidebar, what's the deal? =
 
-Some themes may have very small sidebars and CSS styles alter the appearance of Subscribe2 Widget Pro.
+Some themes may have very small sidebars and/or CSS styles that alter the appearance of Subscribe2 Widget Pro.
 
 
 == Screenshots ==
@@ -62,6 +70,7 @@ Some themes may have very small sidebars and CSS styles alter the appearance of 
 * New: Added anti-spam feature to widget found in version 9.0 of Subscribe2
 * Updated: Thorough testing and debugging of non-AJAX submission methods
 * Updated: Reworked email validation regex for email field
+* Updated: New Readme FAQ question
 * Cleanup: Removed unused is_subscribe2_activated function
 
 = 1.2.2 =

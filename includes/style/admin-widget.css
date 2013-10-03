@@ -43,6 +43,8 @@
 
 .new-window { background: url('../images/new-window-icon.png') no-repeat right 3px transparent; padding-right:16px;  }
 
+.widget span.s2w-field-detail { font-size:11px; font-style:italic; margin: 4px 0 0; display: block; }
+
 
 /*!
  * Bootstrap v2.2.1

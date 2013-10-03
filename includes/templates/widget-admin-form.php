@@ -58,7 +58,7 @@
 
 
     <p>
-        <label for="<?php echo $this->get_field_name('postto'); ?>"><?php _e('Post form content to page', 's2'); ?>:<img src="<?php echo S2W_WIDGET_PRO_URL . '/includes/images/help.png' ?>" title="<?php _e('This is the page the opt-in form will post the form data and redirect the user to.', 's2w'); ?>" class="tooltip-info" width="16" height="16"/></label>
+        <label for="<?php echo $this->get_field_name('postto'); ?>"><?php _e('Post form content to page', 's2'); ?>:<img src="<?php echo S2W_WIDGET_PRO_URL . '/includes/images/help.png' ?>" title="<?php _e('This is the page the opt-in form will post the form data and redirect the user to for subscriptions. <strong>Important:</strong> This page must have the subscribe2 shortcode on it for the widget to function properly.', 's2w'); ?>" class="tooltip-info" width="16" height="16"/></label>
         <select class="widefat" id="<?php echo $this->get_field_id('postto'); ?>" name="<?php echo $this->get_field_name('postto'); ?>">
             <?php global $mysubscribe2; ?>
             <option value="<?php echo $mysubscribe2->subscribe2_options['s2page']; ?>"><?php _e('Use Subscribe2 default', 's2w'); ?></option>
@@ -69,6 +69,7 @@
                 <?php _e('Use Home Page', 's2w'); ?></option>
             <?php $mysubscribe2->pages_dropdown($postto); ?>
         </select>
+        <span class="s2w-field-detail"><?php _e('<strong>Important:</strong> Post form page must contain subscribe2 shortcode to send emails', 's2w'); ?></span>
 
     </p>
     <!-- /Post form content to page -->
@@ -105,11 +106,11 @@
         <input class="widefat" id="<?php echo $this->get_field_id('div'); ?>" name="<?php echo $this->get_field_name('div'); ?>" type="text" value="<?php echo $div; ?>"/>
     </p><!-- /Custom Container Class -->
 
-    <p>
-        <input id="<?php echo $this->get_field_id('disable_antispam'); ?>" name="<?php echo $this->get_field_name('disable_antispam'); ?>" type="checkbox" value="no" <?php echo checked('no', $disable_antispam, false); ?> />
-        <label for="<?php echo $this->get_field_id('disable_antispam'); ?>"><?php _e('Disable Anti-spam', 's2w'); ?>
-            <img src="<?php echo S2W_WIDGET_PRO_URL . '/includes/images/help.png' ?>" title="<?php _e('Subscribe2 Widget Pro uses anti-spam to protect your blog from false submissions. If you are experiencing issues, try disabling the anti-spam option.', 's2w'); ?>" class="tooltip-info" width="16" height="16"/></label>
-    </p><!-- /Disable Antispam -->
+    <!--    <p>-->
+<!--        <input id="--><?php //echo $this->get_field_id('disable_antispam'); ?><!--" name="--><?php //echo $this->get_field_name('disable_antispam'); ?><!--" type="checkbox" value="no" --><?php //echo checked('no', $disable_antispam, false); ?><!-- />-->
+<!--        <label for="--><?php //echo $this->get_field_id('disable_antispam'); ?><!--">--><?php //_e('Disable Anti-spam', 's2w'); ?>
+<!--            <img src="--><?php //echo S2W_WIDGET_PRO_URL . '/includes/images/help.png' ?><!--" title="--><?php //_e('Subscribe2 Widget Pro uses anti-spam to protect your blog from false submissions. If you are experiencing issues, try disabling the anti-spam option.', 's2w'); ?><!--" class="tooltip-info" width="16" height="16"/></label>-->
+<!--    </p><!-- /Disable Antispam -->
 
 
 </div><!-- /.advanced-options -->
