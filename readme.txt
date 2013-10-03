@@ -6,18 +6,18 @@ Requires at least: 3.5
 Tested up to: 3.6.1
 Stable tag: 1.2.5
 
-Subscribe2 Widget Pro greatly enhances the capabilities of Subscribe2 by making it easy to add a better subscription form to your WordPress site.
+Subscribe2 Widget Pro enhances the capabilities of Subscribe2 via an advanced subscription widget with many additional options.
 
 == Description ==
 
 = Subscribe2 Widget Pro Premium =
 [Upgrade to Subscribe2 Widget Pro Premium](http://wordimpress.com/wordpress-plugin-development/subscribe2-widget-pro/ "Upgrade to Subscribe2 Widget Pro Premium")
 
-*Subscribe2 Widget Pro Premium* is a **significant upgrade** to *Subscribe2 Widget Pro* that adds many features and functionality! Features include fast AJAX form submission, optimized Subscribe2 output, an advanced shortcode and more! Also included is priority support, lifetime updates and multisite support.
+*Subscribe2 Widget Pro Premium* is a **significant upgrade** to *Subscribe2 Widget Pro* that adds many features and functionalities not found within the default widget! Features include fast AJAX form submission, customizable labels, validation messages and input values, optimized Subscribe2 output, an advanced shortcode and more! Also included is 1-year of priority support, lifetime updates and multisite support.
 
 = Subscribe2 Widget Pro =
 
-Subscribe2 is the leading email subscription plugin for WordPress. Subscribe2 Widget Pro greatly enhances the standard Subscribe2 widget to provide optimized features and advanced configurations. Easily increase the number of subscribers to your blog by including a better sign up form in your sidebar.
+Subscribe2 is the leading email subscription plugin for WordPress with more than 1 million downloads. Subscribe2 Widget Pro greatly enhances the standard Subscribe2 widget to provide optimized features and advanced configurations. Easily increase the number of subscribers to your blog by including a better sign up form in your sidebar.
 
 Subscribe2 Widget Pro is actively supported and developed. The open source version is available for free to the WordPress community. For additional options and priority support please consider [upgrading to Subscribe2 Widget Pro Premium](http://wordimpress.com/wordpress-plugin-development/subscribe2-widget-pro/). If you like this plugin please [rate it on WordPress.org](http://wordpress.org/support/view/plugin-reviews/subscribe2-widget-pro/).
 
@@ -45,11 +45,11 @@ If you are using the Subscribe2 plugin and want to increase the number of subscr
 
 = I'm not receiving any emails, what's the deal? =
 
-First, please ensure that your WordPress is sending emails correctly by using (http://wordpress.org/plugins/check-email/ "Check Email") or (http://wordpress.org/plugins/wp-smtp/ "WP SMTP") to test email functionality. If you do not receive emails after testing with either of these plugins then something is up with your WordPress email configuration.
+First, please ensure that your WordPress is sending emails correctly by using [Check Email](http://wordpress.org/plugins/check-email/ "Check Email") or [WP SMTP](http://wordpress.org/plugins/wp-smtp/ "WP SMTP") to test email functionality. If you do not receive emails after testing with either of these plugins then something is up with your WordPress email configuration.
 
 If you have confirmed that your WordPress is sending emails correctly and you are still not receiving subscription notices or tests then it's time to check the widget configuration. Under "Submission Options" check the page that the "Post form content to page" field points to. Does this page contain the Subscribe2 shortcode? If not, the subscription emails will not send. The widget is dependent of having the shortcode on the page that it is pointing to for it to function properly.
 
-Still not working? It's time to open a support ticket with WordImpress so we can check it out: (http://wordpress.org/plugins/check-email/ "Check Email") or (http://wordimpress.com/support/forum/subscribe2-widget-pro/subscribe2-widget-pro-free-version/ "Subscribe2 Widget Pro Free Support"). Please be prepared to provide a temporary login for us to work with on your site.
+Still not working? It's time to open a support ticket with WordImpress so we can check it out: [Subscribe2 Widget Pro Free Support](http://wordimpress.com/support/forum/subscribe2-widget-pro/subscribe2-widget-pro-free-version/ "Subscribe2 Widget Pro Free Support"). Please be prepared to provide a temporary login for us to work with on your site.
 
 = The plugin looks funny in my sidebar, what's the deal? =
 
