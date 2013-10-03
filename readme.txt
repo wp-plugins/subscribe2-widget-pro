@@ -45,11 +45,11 @@ If you are using the Subscribe2 plugin and want to increase the number of subscr
 
 = I'm not receiving any emails, what's the deal? =
 
-First, please ensure that your WordPress is sending emails correctly by using (http://wordpress.org/plugins/check-email/ "Check Email") or (http://wordpress.org/plugins/wp-smtp/ "WP SMTP") to test email functionality. If you do not receive emails after testing with either of these plugins then something is up with your WordPress email configuration.
+First, please ensure that your WordPress is sending emails correctly by using [Check Email](http://wordpress.org/plugins/check-email/ "Check Email") or [WP SMTP](http://wordpress.org/plugins/wp-smtp/ "WP SMTP") to test email functionality. If you do not receive emails after testing with either of these plugins then something is up with your WordPress email configuration.
 
 If you have confirmed that your WordPress is sending emails correctly and you are still not receiving subscription notices or tests then it's time to check the widget configuration. Under "Submission Options" check the page that the "Post form content to page" field points to. Does this page contain the Subscribe2 shortcode? If not, the subscription emails will not send. The widget is dependent of having the shortcode on the page that it is pointing to for it to function properly.
 
-Still not working? It's time to open a support ticket with WordImpress so we can check it out: (http://wordpress.org/plugins/check-email/ "Check Email") or (http://wordimpress.com/support/forum/subscribe2-widget-pro/subscribe2-widget-pro-free-version/ "Subscribe2 Widget Pro Free Support"). Please be prepared to provide a temporary login for us to work with on your site.
+Still not working? It's time to open a support ticket with WordImpress so we can check it out: [Subscribe2 Widget Pro Free Support](http://wordimpress.com/support/forum/subscribe2-widget-pro/subscribe2-widget-pro-free-version/ "Subscribe2 Widget Pro Free Support"). Please be prepared to provide a temporary login for us to work with on your site.
 
 = The plugin looks funny in my sidebar, what's the deal? =
 
