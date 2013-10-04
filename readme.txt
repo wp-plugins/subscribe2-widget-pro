@@ -4,7 +4,7 @@ Donate link: http://wordimpress.com/
 Tags: subscribe2, widget, newsletter, email, newsletter widget, subscribe2 widget
 Requires at least: 3.5
 Tested up to: 3.6.1
-Stable tag: 1.2.5
+Stable tag: 1.2.5.1
 
 Subscribe2 Widget Pro enhances the capabilities of Subscribe2 via an advanced subscription widget with many additional options.
 
@@ -65,6 +65,9 @@ Some themes may have very small sidebars and/or CSS styles that alter the appear
 3. The widget settings page
 
 == Changelog ==
+
+= 1.2.5.1 =
+* Fixed: Issue with unavailable automatic updates and new licensing server
 
 = 1.2.5 =
 * New: Added anti-spam feature to widget found in version 9.0 of Subscribe2

@@ -21,6 +21,7 @@ global $options;
         $options = get_option('s2w_widget_settings');
         $response = $licensing->license_status($options);
 
+
         //Current License Status
         $licenseStatus = $options["s2w_widget_premium_license_status"];
 
@@ -40,12 +41,12 @@ global $options;
             <div class="controls">
                 <input type="text" id="s2w_widget_premium_email" name="s2w_widget_settings[s2w_widget_premium_email]" placeholder="your.email@email.com" value="<?php echo s2w_widget_option('s2w_widget_premium_email', $options); ?>" />
                 <!-- hidden license status field -->
-                <input type="hidden" id="s2w_widget_premium_license_status" name="s2w_widget_settings[s2w_widget_premium_license_status]" value="<?php echo $licenseStatus;  ?>" />
+                <input type="<?php if(S2W_DEBUG == true) { echo "text"; } else { echo "hidden"; } ?>" id="s2w_widget_premium_license_status" name="s2w_widget_settings[s2w_widget_premium_license_status]" value="<?php echo s2w_widget_option('s2w_widget_premium_license_status', $options); ?>" />
             </div>
         </div><!--/.control-group -->
         <div class="control-group">
             <div class="control-label">
-                <label for="s2w_widget_premium_license"><?php _e('License Key','s2w'); ?><img src="<?php echo S2W_WIDGET_PRO_URL.'/includes/images/help.png'?>" title="<?php _e('The license key can be found in your confirmation email. If you lost your license you can <a href=\'http://wordimpress.com/lost-licence/\'>request it sent by email</a>.', 's2w'); ?>" class="tooltip-info" width="16" height="16" /></label>
+                <label for="s2w_widget_premium_license"><?php _e('License Key','s2w'); ?><img src="<?php echo S2W_WIDGET_PRO_URL.'/includes/images/help.png'?>" title="<?php _e('The license key can be found in your confirmation email. If you lost your license you can <a href=\'http://wordimpress.com/lost-licence/\' target=\'_blank\' class=\'new-window\'>request it sent by email</a>.', 's2w'); ?>" class="tooltip-info" width="16" height="16" /></label>
             </div>
 
             <div class="controls">
