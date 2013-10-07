@@ -210,7 +210,7 @@ if (!class_exists('S2W_Plugin_Licensing')):
             } elseif (empty($response)) {
 
                 $response = '<div class="no-license alert alert-info">
-                       <p><strong>' . __('Upgrade to Subscribe2 Widget Pro Premium</strong><br/> Features include AJAX form submission, first and last name field support, Subscribe2 frontend script removal and more.', 's2w') . '</p>
+                       <p><strong>' . __('Upgrade to Subscribe2 Widget Pro Premium</strong><br/> Features include AJAX form submission (page never reloads), editable labels and inputs, form themes and more.', 's2w') . '</p>
                    </div>';
 
 

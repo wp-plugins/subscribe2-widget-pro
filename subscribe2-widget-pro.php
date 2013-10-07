@@ -3,7 +3,7 @@
 Plugin Name: Subscribe2 Widget Pro
 Plugin URI: http://wordimpress.com/
 Description: An enhanced Subscribe2 WordPress widget that will help you increase newsletter conversions.
-Version: 1.2.5.1
+Version: 1.2.5.2
 Author: Devin Walker
 Author URI: http://imdev.in/
 License: GPLv2
@@ -82,37 +82,6 @@ require_once (dirname(__FILE__) . '/includes/options.php');
 $licenseFuncs = include(dirname(__FILE__) . '/lib/license.php');
 if (file_exists($licenseFuncs)) {
     echo $licenseFuncs;
-}
-
-
-/**
- * Logic to check for updated version of Subscribe2 Widget Pro Premium
- * if the user has a valid license key and email
- */
-if (is_s2w_license_active()) {
-
-    /*
-     * Adds the Premium Plugin updater
-     * @see: https://github.com/YahnisElsts/wp-update-server
-     */
-    require 'lib/plugin-updates/plugin-update-checker.php';
-    $updateChecker = PucFactory::buildUpdateChecker(
-        'http://wordimpress.com/wp-update-server/?action=get_metadata&slug=subscribe2-widget-pro', //Metadata URL.
-        __FILE__, //Full path to the main plugin file.
-        'subscribe2-widget-pro' //Plugin slug. Usually it's the same as the name of the directory.
-    );
-
-    /* ... Code that initializes the update checker ... */
-    //Add the license key to query arguments.
-    $updateChecker->addQueryArgFilter('wsh_filter_update_checks');
-    function wsh_filter_update_checks($queryArgs) {
-        $options = get_option('s2w_widget_settings');
-        if (!empty($options['s2w_widget_premium_license'])) {
-            $queryArgs['license_key'] = $options['s2w_widget_premium_license'];
-        }
-        return $queryArgs;
-    }
-
 }
 
 
