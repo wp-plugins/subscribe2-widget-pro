@@ -19,11 +19,11 @@ if (!$hide_widget_title == 'hide') {
 //Display Success Message for signed up users (non-AJAX submissions)
 if (isset($_POST["subscribe"])) {
 
-    echo "<div class='s2w-alert s2w-success'>" . $success_message . "</div>";
+    echo "<div class='s2w-alert s2w-success'>" . (!empty($success_message) ? $success_message : __("Thank you for subscribing, please check your email to confirm your subscription.", 's2w')) . "</div>";
 
 } elseif (isset($_POST["unsubscribe"])) {
 
-    echo "<div class='s2w-alert s2w-success'>" . $unsubscribe_message . "</div>";
+    echo "<div class='s2w-alert s2w-success'>" . (!empty($unsubscribe_message) ? $unsubscribe_message : __("Subscription removal request received. Please check your email to confirm your request.", 's2w')) . "</div>";
 
 } else {
 //Show Widget
