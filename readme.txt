@@ -3,15 +3,15 @@ Contributors: dlocc
 Donate link: http://wordimpress.com/
 Tags: subscribe2, widget, newsletter, email, newsletter widget, subscribe2 widget
 Requires at least: 3.5
-Tested up to: 3.6.1
-Stable tag: 1.2.5.3
+Tested up to: 3.8
+Stable tag: 1.2.6
 
 Subscribe2 Widget Pro enhances the capabilities of Subscribe2 via an advanced subscription widget with many additional options.
 
 == Description ==
 
 = Subscribe2 Widget Pro Premium =
-[Upgrade to Subscribe2 Widget Pro Premium](http://wordimpress.com/wordpress-plugin-development/subscribe2-widget-pro/ "Upgrade to Subscribe2 Widget Pro Premium")
+[Upgrade to Subscribe2 Widget Pro Premium](http://wordimpress.com/plugins/subscribe2-widget-pro/ "Upgrade to Subscribe2 Widget Pro Premium")
 
 *Subscribe2 Widget Pro Premium* is a **significant upgrade** to *Subscribe2 Widget Pro* that adds many features and functionalities not found within the default widget! Features include fast AJAX form submission, customizable labels, validation messages and input values, optimized Subscribe2 output, an advanced shortcode and more! Also included is 1-year of priority support, lifetime updates and multisite support.
 
@@ -19,7 +19,7 @@ Subscribe2 Widget Pro enhances the capabilities of Subscribe2 via an advanced su
 
 Subscribe2 is the leading email subscription plugin for WordPress with more than 1 million downloads. Subscribe2 Widget Pro greatly enhances the standard Subscribe2 widget to provide optimized features and advanced configurations. Easily increase the number of subscribers to your blog by including a better sign up form in your sidebar.
 
-Subscribe2 Widget Pro is actively supported and developed. The open source version is available for free to the WordPress community. For additional options and priority support please consider [upgrading to Subscribe2 Widget Pro Premium](http://wordimpress.com/wordpress-plugin-development/subscribe2-widget-pro/). If you like this plugin please [rate it on WordPress.org](http://wordpress.org/support/view/plugin-reviews/subscribe2-widget-pro/).
+Subscribe2 Widget Pro is actively supported and developed. The open source version is available for free to the WordPress community. For additional options and priority support please consider [upgrading to Subscribe2 Widget Pro Premium](http://wordimpress.com/plugins/subscribe2-widget-pro/). If you like this plugin please [rate it on WordPress.org](http://wordpress.org/support/view/plugin-reviews/subscribe2-widget-pro/).
 
 = Features =
 
@@ -65,6 +65,13 @@ Some themes may have very small sidebars and/or CSS styles that alter the appear
 3. The widget settings page
 
 == Changelog ==
+
+= 1.2.6 =
+* Reformatted all code to WordPress Coding Standards
+* Improved admin widget UI for new WordPress Admin theme
+* Minor improvements to content
+* Fixed: PHP Notices with WP_DEBUG turned on
+* Fixed: Links to old premium plugin purchase
 
 = 1.2.5.3 =
 * Fixed: Subscription notification email not properly sending {ACTION} replacement variable
