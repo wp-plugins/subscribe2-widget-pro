@@ -86,6 +86,7 @@ Layout
 
 #subscribe2-widget-options .control-group:last-of-type {
 	border-bottom: none;
+	margin-bottom: 0;
 }
 
 /* Control Labels */
@@ -131,24 +132,13 @@ Layout
 	border-radius: 3px;
 }
 
-/*----------------------------------------
- Premium License Metabox
- ----------------------------------------*/
-
-#s2w-widget-pro-premium .code, #s2w-widget-pro-premium .wrap #icon-options-general, #icon-options-general + h2 {
-	display: none !important;
-}
-
-#s2w-widget-pro-premium .wrap p:first-of-type::after {
-	content: ' http://wordimpress.com';
-}
-
-#s2w-widget-pro-premium .controls {
-	width: 98%;
-}
-
-#s2w-widget-pro-premium input[type="text"] {
-	width: 98%;
+.wordimpress-link {
+	background: url('../images/wordimpress-logo.png') no-repeat center center transparent;
+	display: block;
+	text-align: center;
+	margin: 0 auto;
+	height: 75px;
+	width: 190px;
 }
 
 /*----------------------------------------
@@ -241,6 +231,8 @@ Labels
 	font-size: 12px;
 	padding: 3px 6px;
 }
+
+
 
 /*----------------------------------------
 Tipsy
@@ -377,4 +369,15 @@ Tipsy
 	border-left: none;
 	border-top-color: transparent;
 	border-bottom-color: transparent;
+}
+
+/* Social Media */
+
+.social-items-wrap > div {
+	display: inline-block;
+}
+
+.google-plus {
+	margin-left: 20px;
+	display: inline;
 }

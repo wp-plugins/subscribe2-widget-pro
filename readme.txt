@@ -3,31 +3,43 @@ Contributors: dlocc
 Donate link: http://wordimpress.com/
 Tags: subscribe2, widget, newsletter, email, newsletter widget, subscribe2 widget
 Requires at least: 3.5
-Tested up to: 3.8
-Stable tag: 1.2.6
+Tested up to: 3.8.1
+Stable tag: 2.0
 
 Subscribe2 Widget Pro enhances the capabilities of Subscribe2 via an advanced subscription widget with many additional options.
 
 == Description ==
 
-= Subscribe2 Widget Pro Premium =
-[Upgrade to Subscribe2 Widget Pro Premium](http://wordimpress.com/plugins/subscribe2-widget-pro/ "Upgrade to Subscribe2 Widget Pro Premium")
+= Subscribe2 Widget Premium =
 
-*Subscribe2 Widget Pro Premium* is a **significant upgrade** to *Subscribe2 Widget Pro* that adds many features and functionalities not found within the default widget! Features include fast AJAX form submission, customizable labels, validation messages and input values, optimized Subscribe2 output, an advanced shortcode and more! Also included is 1-year of priority support, lifetime updates and multisite support.
+[youtube http://www.youtube.com/watch?v=XhOF1bmU14g]
+
+*Subscribe2 Widget Premium* is a significant upgrade to *Subscribe2 Widget Pro* that adds features and functionality not found within the default widget. Features include faster AJAX form submission, customizable labels, validation messages and input values, an advanced shortcode and much more. Also included is 1-year of priority support and auto updates.
+
+[View the Online Demo](http://subscribe2widgetpro.wordimpress.com/ "View the Online Demo of Subscribe2 Widget Pro")
+
+[Upgrade to Subscribe2 Widget Pro Premium](http://wordimpress.com/plugins/subscribe2-widget-pro/ "Upgrade to Subscribe2 Widget Pro Premium")
 
 = Subscribe2 Widget Pro =
 
-Subscribe2 is the leading email subscription plugin for WordPress with more than 1 million downloads. Subscribe2 Widget Pro greatly enhances the standard Subscribe2 widget to provide optimized features and advanced configurations. Easily increase the number of subscribers to your blog by including a better sign up form in your sidebar.
+Subscribe2 is the leading email subscription plugin for WordPress with more than 1.2 million downloads. Unfortunately, the widget that comes with the plugin lacks ease of integration and a good user experience. That's where Subscribe2 Widget Pro comes in... Subscribe2 Widget Pro greatly enhances the standard Subscribe2 widget to provide optimized features and advanced configurations. Easily increase the number of subscribers to your blog by including a better subscription form in your sidebar.
 
-Subscribe2 Widget Pro is actively supported and developed. The open source version is available for free to the WordPress community. For additional options and priority support please consider [upgrading to Subscribe2 Widget Pro Premium](http://wordimpress.com/plugins/subscribe2-widget-pro/). If you like this plugin please [rate it on WordPress.org](http://wordpress.org/support/view/plugin-reviews/subscribe2-widget-pro/).
+Subscribe2 Widget Pro is actively supported and developed. The open source version is available for free to the WordPress community. For additional options and priority support please consider [upgrading to Subscribe2 Widget Pro Premium](http://wordimpress.com/plugins/subscribe2-widget-pro/). If you like this plugin please [rate it on WordPress.org](http://wordpress.org/support/view/plugin-reviews/subscribe2-widget-pro/) to help support future development and spread the good word.
 
 = Features =
 
-1. Display a Subscribe2 newsletter sign-up widget on any sidebar
-2. Customize the look-and-feel of the widget
-3. Easy activation and setup
-4. Clean and semantic markup
-5. Actively supported and developed
+1. Display an optimized Subscribe2 subscription widget in any sidebar
+2. Customize the look-and-feel of the widget with prebuilt themes
+4. Many features and customizations no found in the standard widget
+3. Easy activation and setup with nearly zero overhead
+4. Clean and semantic markup that's well documented and organized
+5. Actively supported and developed from the team at [WordImpress](http://wordimpress.com/ "Click go to WordImpress")
+
+= Disclaimer =
+
+Be sure to test the subscription form. While we've done our best to code it for use in different website environments, we provide this code "as-is" and make no warranties, representations, covenants or guarantees with regard to the subscription widget, and will not be liable for any direct, indirect, incidental or consequential damages or for loss of profit, revenue, data, business or use arising out of your use of the subscription widget.
+
+The developer of this plugin is in no way affiliated with Subscribe2, the company or its affiliates. The code contained herein is developed for free use and distribution in an effort to give back to the WordPress community.
 
 == Installation ==
 
@@ -45,26 +57,38 @@ If you are using the Subscribe2 plugin and want to increase the number of subscr
 
 = I'm not receiving any emails, what's the deal? =
 
-First, please ensure that your WordPress is sending emails correctly by using [Check Email](http://wordpress.org/plugins/check-email/ "Check Email") or [WP SMTP](http://wordpress.org/plugins/wp-smtp/ "WP SMTP") to test email functionality. If you do not receive emails after testing with either of these plugins then something is up with your WordPress email configuration.
+First, please ensure that your WordPress is sending emails correctly by using [Check Email](http://wordpress.org/plugins/check-email/ "Check Email") or [WP SMTP](http://wordpress.org/plugins/wp-smtp/ "WP SMTP") to test email functionality. If you do not receive emails after testing with either of these plugins then something is wrong with either your WordPress or server email configuration.
 
-If you have confirmed that your WordPress is sending emails correctly and you are still not receiving subscription notices or tests then it's time to check the widget configuration. Under "Submission Options" check the page that the "Post form content to page" field points to. Does this page contain the Subscribe2 shortcode? If not, the subscription emails will not send. The widget is dependent of having the shortcode on the page that it is pointing to for it to function properly.
-
-Still not working? It's time to open a support ticket with WordImpress so we can check it out: [Subscribe2 Widget Pro Free Support](http://wordimpress.com/support/forum/subscribe2-widget-pro/subscribe2-widget-pro-free-version/ "Subscribe2 Widget Pro Free Support"). Please be prepared to provide a temporary login for us to work with on your site.
+Still not working? It's time to open a support ticket with WordImpress so we can check it out: [Subscribe2 Widget Pro Free Support](http://wordimpress.com/support/forum/subscribe2-widget-pro/subscribe2-widget-pro-free-version/ "Subscribe2 Widget Pro Free Support"). Please be prepared to provide a temporary login for us to take a look at your site.
 
 = The plugin looks funny in my sidebar, what's the deal? =
 
-Some themes may have very small sidebars and/or CSS styles that alter the appearance of Subscribe2 Widget Pro.
-
+Some themes may have very small sidebars and/or CSS styles that alter the appearance of Subscribe2 Widget Pro. Typically, this is easily fixed with a few CSS modifications. The WordImpress is not available to support theme conflicts for the free version of the plugin.
 
 == Screenshots ==
 
-1. Subscribe2 Widget displayed with default Twenty Twelve theme
+1. Subscribe2 Widget displayed in the demo theme sidebar
 
-2. Widget displayed in sidebar without any menu items toggled. This is the default widget appearance and may not reflect the current look of the widget.
+2. Widget displayed in widget zone without any menu items toggled
 
-3. The widget settings page
+3. A view of the widget with the *Display Options* panel toggled
+
+4. A view of the widget with the *Submission Options* panel toggled
+
+5. The plugin settings page
 
 == Changelog ==
+
+= 2.0 =
+* New: Widget themes; now you can set preset styles
+* New: Display message rather than form to logged in users
+* New: Customizable 'already registered' message to user
+* Improved: Widget now checks submissions against already registered users
+* Improved: Reformatted all code to WP Coding Standards
+* Improved: Changed email input type to 'email' rather than 'text'
+* Removed old licensing from plugin and unnecessary oAuth file
+* Tested with Subscribe2 version 9.1
+* Lots of code clean up, testing and various new features... enjoy!
 
 = 1.2.6 =
 * Reformatted all code to WordPress Coding Standards
@@ -93,7 +117,6 @@ Some themes may have very small sidebars and/or CSS styles that alter the appear
 = 1.2.2 =
 * Updated: Polished upgrade/downgrade code and removed isJSON PHP 5.3+ function for users of older PHP versions
 * Updated: Minor readme.txt updates
-
 
 = 1.2.1 =
 * Updated: License communication logic

@@ -81,7 +81,7 @@ function s2w_widget_options_form() {
 			<div id="icon-s2w" class=""></div>
 			<h2><?php _e( 'Subscribe2 Widget Pro Settings', 's2w' ); ?></h2>
 			<label class="label basic-label">Basic Version</label>
-			<a href="<?php echo S2W_WIDGET_UPGRADE_LINK; ?>" title="Upgrade to Subscribe2 Widget Pro Premium" target="_blank" class="update-link new-window">Upgrade to Premium</a>
+			<a href="<?php echo S2W_WIDGET_UPGRADE_LINK; ?>" title="Upgrade to Subscribe2 Widget Premium" target="_blank" class="update-link new-window">Upgrade to Premium</a>
 
 		</div>
 
@@ -99,10 +99,10 @@ function s2w_widget_options_form() {
 							<div class="inside">
 								<p><?php _e( 'Thanks for choosing Subscribe2 Widget Pro. This plugin allows you to add a Subscribe2 conversion form to your website via an easy to use and intuitive widget.', 's2w' ); ?></p>
 
-								<div class="adminFacebook">
 									<p>
-										<strong><?php _e( 'Like this plugin?  Give it a like on Facebook, Follow Us on Twitter or Google+:', 's2w' ); ?></strong>
-									</p>
+										<strong><?php _e( 'Like this plugin?  Give it a like on Facebook, Follow Us on Twitter or Google+:', 's2w' ); ?></strong></p>
+								<div class="social-items-wrap">
+
 									<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FWordImpress%2F353658958080509&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=220596284639969" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
 									<a href="https://twitter.com/wordimpress" class="twitter-follow-button" data-show-count="false">Follow @wordimpress</a>
 									<script>!function (d, s, id) {
@@ -133,6 +133,7 @@ function s2w_widget_options_form() {
 									</div>
 									<!--/.google-plus -->
 								</div>
+								<!-- /.inside -->
 							</div>
 							<!-- /.inside -->
 						</div>
@@ -209,11 +210,19 @@ function s2w_widget_options_form() {
 
 				<div class="alignright" style="width:24%">
 					<div id="sidebar-sortables" class="meta-box-sortables ui-sortable">
-						<?php
-						$licenseMetabox = include( S2W_WIDGET_PRO_PATH . '/lib/license-metabox.php' );
-						if ( file_exists( $licenseMetabox ) ) {
-							echo $licenseMetabox;
-						} ?>
+
+						<div id="s2w-pro-premium" class="postbox">
+
+							<div class="handlediv" title="Click to toggle"><br></div>
+							<h3 class="hndle"><span><?php _e( 'Subscribe2 Widget Premium', 's2w' ); ?></span></h3>
+
+							<div class="inside">
+								<p><?php _e( 'Subscribe2 Widget Pro Premium is a significant upgrade to Subscribe2 Widget Pro that adds features and functionality not found within the default widget. Features include a faster AJAX form submission method, customizable labels, validation messages and input values, optimized Subscribe2 output, an advanced shortcode and so much more! Also included is 1-year of priority support and auto updates.', 's2w' ); ?>.</p>
+							</div>
+						</div>
+						<!-- /.premium-metabox -->
+
+
 						<div id="subscribe2-widget-pro-support" class="postbox">
 							<div class="handlediv" title="Click to toggle"><br>
 							</div>
@@ -228,6 +237,8 @@ function s2w_widget_options_form() {
 
 					</div>
 					<!-- /#sidebar-sortables -->
+
+					<a href="http://wordimpress.com/" class="wordimpress-link" target="_blank"></a>
 
 				</div>
 				<!-- .alignright -->

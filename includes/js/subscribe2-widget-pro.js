@@ -13,6 +13,7 @@ jQuery(function ($) {
 			return false;
 		} else {
 			//passed validation
+		  jQuery(this).parents('.widget_subscribe2_widget').append('<div class="s2w-loading"></div>');
 			return true;
 		}
 
@@ -31,8 +32,8 @@ function validateEmail(email) {
 
 function s2wInvalidMessage(form) {
 	var validation = jQuery(form).attr('data-validation-error');
-	jQuery('.s2w-alert').fadeOut('fast').remove(); //remove any alerts already present
+	jQuery('.s2w-alert').fadeOut('slow').remove(); //remove any alerts already present
 	jQuery(form).prepend('<div class="s2w-alert s2w-validation">' + validation + '</div>');
-	jQuery('.s2w-alert').slideDown('fast');
+	jQuery('.s2w-alert').slideDown('slow');
 	jQuery(form).find('.s2w-email').addClass('s2w-input-invalid'); //add invalid class to input
 }

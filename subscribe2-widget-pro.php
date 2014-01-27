@@ -3,7 +3,7 @@
 Plugin Name: Subscribe2 Widget Pro
 Plugin URI: http://wordimpress.com/
 Description: An enhanced Subscribe2 WordPress widget that will help you increase newsletter conversions.
-Version: 1.2.6
+Version: 2.0
 Author: Devin Walker
 Author URI: http://imdev.in/
 License: GPLv2
@@ -77,15 +77,6 @@ require_once( dirname( __FILE__ ) . '/includes/options.php' );
 
 
 /**
- * @TODO: Licensing
- */
-$licenseFuncs = include( dirname( __FILE__ ) . '/lib/license.php' );
-if ( file_exists( $licenseFuncs ) ) {
-	echo $licenseFuncs;
-}
-
-
-/**
  * Check for Subscribe2
  */
 function is_subscribe2_activated() {
@@ -101,22 +92,6 @@ function is_subscribe2_activated() {
 
 function s2w_admin_notice() {
 	_e( '<div id="message" class="updated"><p>Subscribe2 Widget Pro plugin requires <strong><a href="http://wordpress.org/extend/plugins/subscribe2/" target="_blank" title="Download and install Subscribe2">Subscribe2</a></strong> to be installed and activated to work properly. Please install the Subscribe2 plugin to use Subscribe2 Widget Pro.</p></div>', 's2w' );
-
-}
-
-
-/**
- * Check License
- */
-function is_s2w_license_active() {
-
-	$options = get_option( 's2w_widget_settings' );
-	if ( isset( $options['s2w_widget_premium_license_status'] ) && $options['s2w_widget_premium_license_status'] == "1" ) {
-		return true;
-	} else {
-		//Update option license status option
-		return false;
-	}
 
 }
 
@@ -185,7 +160,9 @@ function s2w_get_options_link( $linkText = '' ) {
  * Get the Widget
  */
 if ( ! class_exists( 'Subscribe2_Widget_Pro' ) && is_subscribe2_activated() ) {
+
 	require 'includes/widget.php';
+
 } else {
 
 	//Throw notice if subscribe2 is not activated
