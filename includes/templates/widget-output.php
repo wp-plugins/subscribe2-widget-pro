@@ -9,7 +9,8 @@
 
 //Initialize s2 classes
 //We are using some of the s2 class functions here
-$s2Class = new s2class();
+global $mysubscribe2;
+$s2Class = $mysubscribe2;
 $s2Class->s2init();
 $s2Class->load_strings();
 $options = get_option( 's2w_widget_settings' );
@@ -108,7 +109,7 @@ if ( $user_ID && S2W_DEBUG !== true ) {
 } //User is not logged in so proceed with subscribe form output
 else {
 
-	$subscribe_email = !isset($_POST['email']) ? '' : $s2Class->sanitize_email( $_POST['email'] );
+	$subscribe_email = ! isset( $_POST['email'] ) ? '' : $s2Class->sanitize_email( $_POST['email'] );
 	$check           = $wpdb->get_var( $wpdb->prepare( "SELECT user_email FROM $wpdb->users WHERE user_email = %s", $subscribe_email ) );
 
 	//does the supplied email belong to a registered user?
@@ -158,6 +159,10 @@ else {
 			} ?>
 
 			<form action="<?php echo $postPermalink; ?>" method="post" class="s2w-form">
+
+				<?php
+				//Pre widget form action
+				do_action( 'subscribe2_widget_pro_form_fields_before' ); ?>
 
 				<input type="hidden" value="<?php echo s2w_get_IP(); ?>" name="ip">
 
@@ -209,6 +214,10 @@ else {
 				echo wpautop( $widgetpostcontent );
 			}
 			?>
+
+			<?php
+			//Post widget form action
+			do_action( 'subscribe2_widget_pro_form_fields_after' ); ?>
 
 		</div>
 

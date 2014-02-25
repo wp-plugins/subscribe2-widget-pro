@@ -4,7 +4,7 @@ Donate link: http://wordimpress.com/
 Tags: subscribe2, widget, newsletter, email, newsletter widget, subscribe2 widget
 Requires at least: 3.5
 Tested up to: 3.8.1
-Stable tag: 2.0
+Stable tag: 2.1
 
 Subscribe2 Widget Pro enhances the capabilities of Subscribe2 via an advanced subscription widget with many additional options.
 
@@ -78,6 +78,10 @@ Some themes may have very small sidebars and/or CSS styles that alter the appear
 5. The plugin settings page
 
 == Changelog ==
+
+= 2.1 =
+* New: Add hooks for more advanced users to add fields within the form element
+* Fixed: Bug "PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, class 's2class' does not have a method 'add_s2_ajax'"
 
 = 2.0 =
 * New: Widget themes; now you can set preset styles
